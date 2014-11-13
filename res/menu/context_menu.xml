@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item android:id="@+id/action_take_photo" android:title="@string/id_action_take_photo" android:orderInCategory="1"></item>
+    <item android:id="@+id/action_choose" android:title="@string/id_action_choose" android:orderInCategory="2"></item>
+    <item android:id="@+id/action_cancel" android:title="@string/id_action_cancel" android:orderInCategory="3"></item>
+    
+
+</menu>

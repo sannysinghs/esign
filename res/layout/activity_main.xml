@@ -73,8 +73,8 @@
 
     <ImageView
         android:id="@+id/img_nric_back"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_below="@+id/id_static_main_nric_back_view"
@@ -119,8 +119,8 @@
 
     <ImageView
         android:id="@+id/img_sign"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_below="@+id/id_static_main_sign_view"

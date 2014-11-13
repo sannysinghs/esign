@@ -27,10 +27,10 @@ public final class R {
         public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
-        public static final int action_cancel=0x7f080012;
-        public static final int action_choose=0x7f080011;
-        public static final int action_settings=0x7f080013;
-        public static final int action_take_photo=0x7f080010;
+        public static final int action_cancel=0x7f080013;
+        public static final int action_choose=0x7f080012;
+        public static final int action_settings=0x7f080014;
+        public static final int action_take_photo=0x7f080011;
         public static final int id_static_main_nric_back_view=0x7f080006;
         public static final int id_static_main_nric_front_view=0x7f080001;
         public static final int id_static_main_sign_view=0x7f08000b;
@@ -47,9 +47,11 @@ public final class R {
         public static final int txt_main_nric_back_desc=0x7f080008;
         public static final int txt_main_nric_desc=0x7f080003;
         public static final int txt_main_sign_desc=0x7f08000d;
+        public static final int view_pad=0x7f080010;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
+        public static final int activity_signature_dialog=0x7f030001;
     }
     public static final class menu {
         public static final int context_menu=0x7f070000;

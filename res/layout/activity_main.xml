@@ -12,51 +12,147 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentTop="true"
+       	android:layout_centerHorizontal="true"
+        android:text="@string/txt_static_main_upload_title" />
+    
+    <TextView
+        android:id="@+id/id_static_main_nric_front_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_alignParentBottom="@+id/textView1"
+        android:layout_marginTop="10dp"
+        android:text="@string/txt_static_main_nric_front_view_title"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:id="@+id/img_nric"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="28dp"
-        android:src="@drawable/ic_camera" />
-
-    <ImageView
-        android:id="@+id/imageView1"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/id_static_main_nric_front_view"
+       	android:src="@drawable/ic_camera" />
+    
+   <TextView
+        android:id="@+id/txt_main_nric_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/img_nric"
-        android:layout_marginLeft="26dp"
-        android:layout_toRightOf="@+id/textView1"
-        android:src="@drawable/ic_camera" />
-
+        android:layout_toRightOf="@+id/img_nric"
+        android:text="@string/txt_static_main_click_title"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+  
+    
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageView1"
-        android:layout_below="@+id/imageView1"
-        android:layout_marginTop="58dp"
-        android:src="@drawable/ic_camera" />
-
-    <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/img_main_delete"
+        android:layout_width="20dp"
         android:visibility="invisible"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@+id/txt_main_nric_desc"
+        android:layout_toRightOf="@+id/txt_main_nric_desc"
+        android:src="@drawable/ic_delete" />
+    
+     <TextView 
+	   android:id="@+id/txt_main_error_nric_view"
+       android:layout_width="match_parent"
+       android:layout_height="20dp"
+       android:textColor="#ff0000"
+       android:layout_below="@+id/img_main_delete"/> 
+    
+     <TextView
+        android:id="@+id/id_static_main_nric_back_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageView1"
-        android:layout_marginLeft="60dp"
-        android:layout_toRightOf="@+id/imageView1"
-        android:src="@drawable/ic_delete" />
+        android:layout_below="@+id/txt_main_error_nric_view"
+        android:layout_marginTop="10dp"
+        android:text="@string/txt_static_main_nric_back_view_title"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/img_nric_back"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/id_static_main_nric_back_view"
+       	android:src="@drawable/ic_camera" />
+    
+   <TextView
+        android:id="@+id/txt_main_nric_back_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/imageView2"
-        android:src="@drawable/ic_camera" />
+        android:layout_alignBottom="@+id/img_nric_back"
+        android:layout_toRightOf="@+id/img_nric_back"
+        android:text="@string/txt_static_main_click_title"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+    
+    
+    <ImageView
+        android:id="@+id/img_main_delete2"
+        android:layout_width="20dp"
+        android:visibility="invisible"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@+id/txt_main_nric_back_desc"
+        android:layout_toRightOf="@+id/txt_main_nric_back_desc"
+        android:src="@drawable/ic_delete" />
+    
+    
+     <TextView 
+	   android:id="@+id/txt_main_error_nric_back_view"
+       android:layout_width="match_parent"
+       android:layout_height="20dp"
+        android:textColor="#ff0000"
+       android:layout_below="@+id/img_main_delete2"/> 
+    
+     <TextView
+        android:id="@+id/id_static_main_sign_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_main_error_nric_back_view"
+        android:layout_marginTop="10dp"
+        android:text="@string/txt_static_main_sign_view_title"
+        android:layout_centerHorizontal="true" />
 
+    <ImageView
+        android:id="@+id/img_sign"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/id_static_main_sign_view"
+       	android:src="@drawable/ic_camera" />
+    
+   <TextView
+        android:id="@+id/txt_main_sign_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/img_sign"
+        android:layout_toRightOf="@+id/img_sign"
+        android:text="@string/txt_static_main_click_title"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+    
+    
+    <ImageView
+        android:id="@+id/img_main_delete3"
+        android:layout_width="20dp"
+        android:visibility="invisible"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@+id/txt_main_sign_desc"
+        android:layout_toRightOf="@+id/txt_main_sign_desc"
+        android:src="@drawable/ic_delete" />
+    
+
+   <TextView 
+	   android:id="@+id/txt_main_error_sign"
+       android:layout_width="match_parent"
+        android:textColor="#ff0000"
+       android:layout_height="20dp"
+       android:layout_below="@+id/img_main_delete3"/> 
+   
+    
 </RelativeLayout>

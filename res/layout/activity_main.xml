@@ -28,8 +28,8 @@
 
     <ImageView
         android:id="@+id/img_nric"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_below="@+id/id_static_main_nric_front_view"
@@ -73,8 +73,8 @@
 
     <ImageView
         android:id="@+id/img_nric_back"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_below="@+id/id_static_main_nric_back_view"
@@ -152,7 +152,15 @@
        android:layout_width="match_parent"
         android:textColor="#ff0000"
        android:layout_height="20dp"
-       android:layout_below="@+id/img_main_delete3"/> 
-   
+       android:layout_below="@+id/img_main_delete3"/>
+
+   <Button
+       android:id="@+id/btn_submit"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/txt_main_error_sign"
+       android:layout_centerHorizontal="true"
+       android:layout_marginBottom="20dp"
+       android:text="@string/btn_static_main_submit" />
     
 </RelativeLayout>

@@ -9,9 +9,10 @@ import android.content.DialogInterface.OnClickListener;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+
+import com.tagit.esign.utils.MUtils;
 
 public class SingatureDialog extends DialogFragment {
 
@@ -47,13 +48,13 @@ public class SingatureDialog extends DialogFragment {
 				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
+					 //create underlying bitmap
 					 Bitmap bitmap = Bitmap.createBitmap(drawPadView.getWidth(),drawPadView.getHeight(), Bitmap.Config.ARGB_8888);
+					 //Define bitmap in Canvas
 					 Canvas c = new Canvas(bitmap);
-					 
-					 drawPadView.layout(drawPadView.getLeft(), drawPadView.getTop(), drawPadView.getRight(), drawPadView.getBottom());
+					 //use Bitmap's draw method with parameter of canvas
 					 drawPadView.draw(c);
-					 mListener.onSave(bitmap);
+					 mListener.onSave(MUtils.ScaleDownMyBitmap(bitmap , 100 , 60));
 				}
 			   })
 			   .setNegativeButton("Cancel", new OnClickListener() {

@@ -30,7 +30,7 @@ public class MDrawingPadView extends View {
 	
 	@Override
 	protected void onDraw(Canvas canvas) {
-		// TODO Auto-generated method stub
+		// one of the drawing method of Canvas
 		canvas.drawPath(path,paint);
 	}
 	
@@ -49,10 +49,11 @@ public class MDrawingPadView extends View {
 		break;
 	
 		default:
+			
 			break;
 		}
 		
-		invalidate();
+		invalidate();//saying android framework that to draw and call onDraw() method
 		return true;
 	}
 

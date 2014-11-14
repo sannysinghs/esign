@@ -27,10 +27,11 @@ public final class R {
         public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
-        public static final int action_cancel=0x7f080013;
-        public static final int action_choose=0x7f080012;
-        public static final int action_settings=0x7f080014;
-        public static final int action_take_photo=0x7f080011;
+        public static final int action_cancel=0x7f080014;
+        public static final int action_choose=0x7f080013;
+        public static final int action_settings=0x7f080015;
+        public static final int action_take_photo=0x7f080012;
+        public static final int btn_submit=0x7f080010;
         public static final int id_static_main_nric_back_view=0x7f080006;
         public static final int id_static_main_nric_front_view=0x7f080001;
         public static final int id_static_main_sign_view=0x7f08000b;
@@ -47,7 +48,7 @@ public final class R {
         public static final int txt_main_nric_back_desc=0x7f080008;
         public static final int txt_main_nric_desc=0x7f080003;
         public static final int txt_main_sign_desc=0x7f08000d;
-        public static final int view_pad=0x7f080010;
+        public static final int view_pad=0x7f080011;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -60,6 +61,7 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f050002;
         public static final int app_name=0x7f050000;
+        public static final int btn_static_main_submit=0x7f05000b;
         public static final int hello_world=0x7f050001;
         public static final int id_action_cancel=0x7f05000a;
         public static final int id_action_choose=0x7f050009;

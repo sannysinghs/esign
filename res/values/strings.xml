@@ -13,6 +13,7 @@
     <string name="id_action_take_photo">Take a photo</string>
     <string name="id_action_choose">Choose from library</string>
     <string name="id_action_cancel">Cancel</string>
+    <string name="btn_static_main_submit">Next</string>
     
 
 </resources>

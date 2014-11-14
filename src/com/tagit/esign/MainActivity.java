@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.tagit.esign.SingatureDialog.OnSaveDialogListener;
+import com.tagit.esign.utils.MUtils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,6 +16,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -24,8 +27,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
 	static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -45,11 +50,11 @@ public class MainActivity extends Activity implements OnClickListener {
 	TextView nric_error;
 	TextView nric_back_error;
 	TextView sign_error;
+	Button btn_next;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
 		
 		img_nric = (ImageView) findViewById(R.id.img_nric);
 		img_nric_back = (ImageView) findViewById(R.id.img_nric_back);
@@ -67,9 +72,13 @@ public class MainActivity extends Activity implements OnClickListener {
 		nric_back_error = (TextView) findViewById(R.id.txt_main_error_nric_back_view);
 		sign_error = (TextView) findViewById(R.id.txt_main_error_sign);
 		
+		btn_next = (Button) findViewById(R.id.btn_submit);
+		
 		img_nric.setOnClickListener(this);
 		img_nric_back.setOnClickListener(this);
 		img_sign.setOnClickListener(this);
+		btn_next.setOnClickListener(this);
+		
 		
 		nric_delete.setOnClickListener(new OnClickListener() {
 			
@@ -148,6 +157,14 @@ public class MainActivity extends Activity implements OnClickListener {
 					sign_error.setVisibility(View.VISIBLE);
 				}
 			}).show(getFragmentManager(), "Signature");
+		}else if(v.getId() == R.id.btn_submit){
+			Drawable d = getResources().getDrawable(R.drawable.ic_camera);
+			
+			Log.d("",img_nric.getDrawable().hashCode() + " : " + d.hashCode());
+//			Toast.makeText(MainActivity.this, "Error occur !", Toast.LENGTH_SHORT).show();
+			if ( d.equals(img_nric.getDrawable()) ) {
+				
+			}
 		}else{
 			Builder builder = new AlertDialog.Builder(MainActivity.this);
 			builder.setTitle("Choose");
@@ -186,6 +203,15 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 	}
 	
+	protected Bitmap ScaleDownBitmap(Bitmap bitmap) {
+		// TODO Auto-generated method stub
+		
+		Options options = new  BitmapFactory.Options();
+		options.inJustDecodeBounds = true;
+//		BitmapFactory.decode
+		return null;
+	}
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		
@@ -225,13 +251,13 @@ public class MainActivity extends Activity implements OnClickListener {
 			
 			switch (selectedViewID) {
 			case R.id.img_nric:
-					img_nric.setImageBitmap(bitmap);
+					img_nric.setImageBitmap(MUtils.ScaleDownMyBitmap(bitmap, 100, 60));
 					nric_desc.setText(format);
 					nric_delete.setVisibility(View.VISIBLE);
 					nric_error.setVisibility(View.VISIBLE);
 				break;
 			case R.id.img_nric_back:
-					img_nric_back.setImageBitmap(bitmap);
+					img_nric_back.setImageBitmap(MUtils.ScaleDownMyBitmap(bitmap, 100, 60));
 					nric_back_desc.setText(format);
 					nric_back_delete.setVisibility(View.VISIBLE);
 					nric_back_error.setVisibility(View.VISIBLE);

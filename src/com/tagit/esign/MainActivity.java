@@ -36,7 +36,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	static final int REQUEST_IMAGE_CAPTURE = 1;
 	static final int REQUEST_CHOOSE_LIBRARY = 2;
 	static final CharSequence[] items = {"Take a photo","Choose from library","Cancel"};
-	static final String format = "added on "+ new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+	static final String format = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 	ImageView img_nric;
 	ImageView img_nric_back;
 	ImageView img_sign;
@@ -88,6 +88,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				img_nric.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_camera));
 				nric_desc.setText(R.string.txt_static_main_click_title);
 				nric_delete.setVisibility(View.INVISIBLE);
+				nric_error.setVisibility(View.VISIBLE);
 				nric_error.setText("deleted on "+format);
 			}
 		});
@@ -99,6 +100,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				img_nric_back.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_camera));
 				nric_back_desc.setText(R.string.txt_static_main_click_title);
 				nric_back_delete.setVisibility(View.INVISIBLE);
+				nric_error.setVisibility(View.VISIBLE);
 				nric_back_error.setText("deleted on "+format);
 			}
 		});
@@ -112,6 +114,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				img_sign.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_camera));
 				sign_desc.setText(R.string.txt_static_main_click_title);
 				sign_delete.setVisibility(View.INVISIBLE);
+				nric_error.setVisibility(View.VISIBLE);
 				sign_error.setText("deleted on "+format);
 			}
 		});			
@@ -154,14 +157,13 @@ public class MainActivity extends Activity implements OnClickListener {
 					img_sign.setImageBitmap(bitmap);
 					sign_desc.setText(format);
 					sign_delete.setVisibility(View.VISIBLE);
-					sign_error.setVisibility(View.VISIBLE);
+					sign_error.setVisibility(View.GONE);
 				}
 			}).show(getFragmentManager(), "Signature");
 		}else if(v.getId() == R.id.btn_submit){
 			Drawable d = getResources().getDrawable(R.drawable.ic_camera);
 			
 			Log.d("",img_nric.getDrawable().hashCode() + " : " + d.hashCode());
-//			Toast.makeText(MainActivity.this, "Error occur !", Toast.LENGTH_SHORT).show();
 			if ( d.equals(img_nric.getDrawable()) ) {
 				
 			}
@@ -201,15 +203,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		
 		
-	}
-	
-	protected Bitmap ScaleDownBitmap(Bitmap bitmap) {
-		// TODO Auto-generated method stub
-		
-		Options options = new  BitmapFactory.Options();
-		options.inJustDecodeBounds = true;
-//		BitmapFactory.decode
-		return null;
 	}
 
 	@Override
@@ -252,15 +245,15 @@ public class MainActivity extends Activity implements OnClickListener {
 			switch (selectedViewID) {
 			case R.id.img_nric:
 					img_nric.setImageBitmap(MUtils.ScaleDownMyBitmap(bitmap, 100, 60));
-					nric_desc.setText(format);
+					nric_desc.setText("added on "+format);
 					nric_delete.setVisibility(View.VISIBLE);
-					nric_error.setVisibility(View.VISIBLE);
+					nric_error.setVisibility(View.GONE);
 				break;
 			case R.id.img_nric_back:
 					img_nric_back.setImageBitmap(MUtils.ScaleDownMyBitmap(bitmap, 100, 60));
-					nric_back_desc.setText(format);
+					nric_back_desc.setText("added on " +format);
 					nric_back_delete.setVisibility(View.VISIBLE);
-					nric_back_error.setVisibility(View.VISIBLE);
+					nric_back_error.setVisibility(View.GONE);
 				break;
 			case R.id.img_sign:
 				

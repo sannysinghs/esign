@@ -21,8 +21,8 @@ public class MDrawingPadView extends View {
 		paint = new Paint();
 		path = new Path();
 		
-		paint.setColor(Color.BLACK);
-		paint.setStrokeWidth(5f);
+		paint.setColor(Color.DKGRAY);
+		paint.setStrokeWidth(2f);
 		paint.setStrokeJoin(Paint.Join.ROUND);
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setAntiAlias(true);

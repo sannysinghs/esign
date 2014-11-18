@@ -32,6 +32,7 @@ public class MUtils {
 		 options.inJustDecodeBounds = false;
 		 
 		 return BitmapFactory.decodeByteArray(mBitmapByteArray, 0, mBitmapByteArray.length, options);
+		 
 		
 	}
 }

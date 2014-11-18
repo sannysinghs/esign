@@ -24,8 +24,8 @@ public class MDrawingPadView extends View {
 		paint = new Paint();
 		path = new Path();
 		
-		paint.setColor(Color.BLACK);
-		paint.setStrokeWidth(3f);
+		paint.setColor(Color.DKGRAY);
+		paint.setStrokeWidth(2f);
 		paint.setStrokeJoin(Paint.Join.ROUND);
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setAntiAlias(true);
@@ -39,8 +39,6 @@ public class MDrawingPadView extends View {
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		
-		
 		
 		float x = event.getX();
 		float y = event.getY();

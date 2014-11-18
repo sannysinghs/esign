@@ -54,6 +54,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	boolean status_nric;
 	boolean status_nric_back;
 	boolean status_sign;
+	String[] ENStr = new String[3];
+	String[] DEStr = new String[3];
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -170,22 +172,19 @@ public class MainActivity extends Activity implements OnClickListener {
 				
 				@Override
 				public void onSave(Bitmap bitmap) {
-					// TODO Auto-generated method stub
-					img_sign.setImageBitmap(bitmap);
+					ENStr[0] = encode(bitmap);
+					img_sign.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 150, 150, true));
 					sign_desc.setText(format);
 					sign_delete.setVisibility(View.VISIBLE);
 					sign_error.setVisibility(View.GONE);
 					status_sign = true;
+					
 				}
 			}).show(getFragmentManager(), "Signature");
 		}else if(v.getId() == R.id.btn_submit){
 			
 			if ( status_nric && status_nric_back && status_sign ) {
-				Intent i = new Intent(this, ResultActivity.class);
-//				i.putExtra("d1", encode(img_nric.getDrawingCache()));
-//				i.putExtra("d2", encode(img_nric_back.getDrawingCache()));
-//				i.putEx
-				
+				Toast.makeText(MainActivity.this, ENStr[0].toString(), Toast.LENGTH_LONG).show();
 			}
 		}else{
 			Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -213,16 +212,12 @@ public class MainActivity extends Activity implements OnClickListener {
 					default:
 						break;
 					}
-					
 				}
 			});
 			
 			AlertDialog alert = builder.create();
 			alert.show();
 		}
-		
-		
-		
 	}
 
 	@Override
@@ -230,10 +225,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
 	        Bundle extras = data.getExtras();
-	       
 	        Bitmap imageBitmap = (Bitmap) extras.get("data");
-	        
-	       
 	        fillImage(imageBitmap);
 	    }
 		
@@ -257,28 +249,28 @@ public class MainActivity extends Activity implements OnClickListener {
 	private void fillImage(Bitmap bitmap) {
 		
 		if (selectedViewID != 0) {
+			bitmap =  MUtils.ScaleDownMyBitmap(bitmap, 100, 100);
+			Bitmap ScaleBitmap = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
 			
 			switch (selectedViewID) {
 			case R.id.img_nric:
-					img_nric.setImageBitmap(MUtils.ScaleDownMyBitmap(bitmap, 100, 60));
+					img_nric.setImageBitmap(ScaleBitmap);
 					nric_desc.setText("added on "+format);
 					nric_delete.setVisibility(View.VISIBLE);
 					nric_error.setVisibility(View.GONE);
 					status_nric = true;
 				break;
 			case R.id.img_nric_back:
-					img_nric_back.setImageBitmap(MUtils.ScaleDownMyBitmap(bitmap, 100, 60));
+					img_nric_back.setImageBitmap(ScaleBitmap);
 					nric_back_desc.setText("added on " +format);
 					nric_back_delete.setVisibility(View.VISIBLE);
 					nric_back_error.setVisibility(View.GONE);
 					status_nric_back = true;
 				break;
-			case R.id.img_sign:
-				
-				break;
 			default:
 				selectedViewID = 0;
 				break;
+				
 			}
 		}
 	}

@@ -51,6 +51,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	TextView nric_back_error;
 	TextView sign_error;
 	Button btn_next;
+	boolean status_nric;
+	boolean status_nric_back;
+	boolean status_sign;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -90,8 +93,10 @@ public class MainActivity extends Activity implements OnClickListener {
 				nric_delete.setVisibility(View.INVISIBLE);
 				nric_error.setVisibility(View.VISIBLE);
 				nric_error.setText("deleted on "+format);
+				status_nric = false;
 			}
 		});
+		
 		nric_back_delete.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -100,8 +105,9 @@ public class MainActivity extends Activity implements OnClickListener {
 				img_nric_back.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_camera));
 				nric_back_desc.setText(R.string.txt_static_main_click_title);
 				nric_back_delete.setVisibility(View.INVISIBLE);
-				nric_error.setVisibility(View.VISIBLE);
+				nric_back_error.setVisibility(View.VISIBLE);
 				nric_back_error.setText("deleted on "+format);
+				status_nric_back = false;
 			}
 		});
 		
@@ -109,20 +115,31 @@ public class MainActivity extends Activity implements OnClickListener {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
 				img_sign.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_camera));
 				sign_desc.setText(R.string.txt_static_main_click_title);
 				sign_delete.setVisibility(View.INVISIBLE);
-				nric_error.setVisibility(View.VISIBLE);
+				sign_error.setVisibility(View.VISIBLE);
 				sign_error.setText("deleted on "+format);
+				status_sign = false;
 			}
 		});			
 	}
 	
-	private void decode(String encode) {
+	
+	private String encode(Bitmap b) {
 		// TODO Auto-generated method stub
-		byte[] decode = Base64.decode(encode, Base64.DEFAULT);
+		String encode = null; 
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	        boolean compress = b.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+	        if (compress) {
+	        	 encode = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
+			}
+	     return encode;    
+	}
+	
+	private byte[] decode(String encode) {
+		// TODO Auto-generated method stub
+		return Base64.decode(encode, Base64.DEFAULT);
 //		imgDecode.setImageBitmap(BitmapFactory.decodeByteArray(decode, 0, decode.length));
 	}
 
@@ -158,13 +175,16 @@ public class MainActivity extends Activity implements OnClickListener {
 					sign_desc.setText(format);
 					sign_delete.setVisibility(View.VISIBLE);
 					sign_error.setVisibility(View.GONE);
+					status_sign = true;
 				}
 			}).show(getFragmentManager(), "Signature");
 		}else if(v.getId() == R.id.btn_submit){
-			Drawable d = getResources().getDrawable(R.drawable.ic_camera);
 			
-			Log.d("",img_nric.getDrawable().hashCode() + " : " + d.hashCode());
-			if ( d.equals(img_nric.getDrawable()) ) {
+			if ( status_nric && status_nric_back && status_sign ) {
+				Intent i = new Intent(this, ResultActivity.class);
+//				i.putExtra("d1", encode(img_nric.getDrawingCache()));
+//				i.putExtra("d2", encode(img_nric_back.getDrawingCache()));
+//				i.putEx
 				
 			}
 		}else{
@@ -213,11 +233,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	       
 	        Bitmap imageBitmap = (Bitmap) extras.get("data");
 	        
-	        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	        boolean compress = imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-	        if (compress) {
-	        	String encode = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
-			}
+	       
 	        fillImage(imageBitmap);
 	    }
 		
@@ -248,12 +264,14 @@ public class MainActivity extends Activity implements OnClickListener {
 					nric_desc.setText("added on "+format);
 					nric_delete.setVisibility(View.VISIBLE);
 					nric_error.setVisibility(View.GONE);
+					status_nric = true;
 				break;
 			case R.id.img_nric_back:
 					img_nric_back.setImageBitmap(MUtils.ScaleDownMyBitmap(bitmap, 100, 60));
 					nric_back_desc.setText("added on " +format);
 					nric_back_delete.setVisibility(View.VISIBLE);
 					nric_back_error.setVisibility(View.GONE);
+					status_nric_back = true;
 				break;
 			case R.id.img_sign:
 				

@@ -4,7 +4,6 @@
     <string name="app_name">Esign</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    
     <string name="txt_static_main_upload_title">Please upload the following documents :</string>
     <string name="txt_static_main_nric_front_view_title">NRIC Front View</string>
     <string name="txt_static_main_click_title">Click here to upload / take a photo</string>
@@ -14,6 +13,6 @@
     <string name="id_action_choose">Choose from library</string>
     <string name="id_action_cancel">Cancel</string>
     <string name="btn_static_main_submit">Next</string>
-    
+    <string name="title_activity_result">Result</string>
 
 </resources>

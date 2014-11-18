@@ -1,6 +1,9 @@
 package com.tagit.esign;
 
+import android.R.color;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -21,8 +24,8 @@ public class MDrawingPadView extends View {
 		paint = new Paint();
 		path = new Path();
 		
-		paint.setColor(Color.DKGRAY);
-		paint.setStrokeWidth(2f);
+		paint.setColor(Color.BLACK);
+		paint.setStrokeWidth(3f);
 		paint.setStrokeJoin(Paint.Join.ROUND);
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setAntiAlias(true);
@@ -36,7 +39,9 @@ public class MDrawingPadView extends View {
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		// TODO Auto-generated method stub
+		
+		
+		
 		float x = event.getX();
 		float y = event.getY();
 		
@@ -47,7 +52,9 @@ public class MDrawingPadView extends View {
 		case MotionEvent.ACTION_MOVE:
 			path.lineTo(x, y);
 		break;
-	
+		case MotionEvent.ACTION_UP:
+			 	
+		break;
 		default:
 			
 			break;
@@ -57,8 +64,11 @@ public class MDrawingPadView extends View {
 		return true;
 	}
 
+	public void clearCanvas() {
+		// TODO Auto-generated method stub
+		path.reset();
+		invalidate();
+	}
 	
 	
-	
-
 }

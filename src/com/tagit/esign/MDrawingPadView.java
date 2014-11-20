@@ -1,15 +1,12 @@
 package com.tagit.esign;
 
-import android.R.color;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.CornerPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
-import android.util.EventLog.Event;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -24,10 +21,12 @@ public class MDrawingPadView extends View {
 		paint = new Paint();
 		path = new Path();
 		
-		paint.setColor(Color.DKGRAY);
-		paint.setStrokeWidth(2f);
-		paint.setStrokeJoin(Paint.Join.ROUND);
+		paint.setColor(Color.BLACK);
+		paint.setStrokeWidth(5f);
 		paint.setStyle(Paint.Style.STROKE);
+		paint.setStrokeJoin(Paint.Join.ROUND);
+		paint.setStrokeCap(Paint.Cap.ROUND);
+		paint.setPathEffect(new CornerPathEffect(20));
 		paint.setAntiAlias(true);
 	}
 	
@@ -47,18 +46,17 @@ public class MDrawingPadView extends View {
 		case MotionEvent.ACTION_DOWN:
 				path.moveTo(x, y);
 			break;
+		case MotionEvent.ACTION_UP:
 		case MotionEvent.ACTION_MOVE:
 			path.lineTo(x, y);
-		break;
-		case MotionEvent.ACTION_UP:
-			 	
-		break;
+			invalidate();//saying android framework that to draw and call onDraw() method
+		break;	 	
 		default:
 			
 			break;
 		}
 		
-		invalidate();//saying android framework that to draw and call onDraw() method
+		
 		return true;
 	}
 

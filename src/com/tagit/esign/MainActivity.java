@@ -6,9 +6,6 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.tagit.esign.SingatureDialog.OnSaveDialogListener;
-import com.tagit.esign.utils.MUtils;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -16,13 +13,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,11 +25,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tagit.esign.SingatureDialog.OnSaveDialogListener;
+import com.tagit.esign.utils.MUtils;
+
 public class MainActivity extends Activity implements OnClickListener {
 	static final int REQUEST_IMAGE_CAPTURE = 1;
 	static final int REQUEST_CHOOSE_LIBRARY = 2;
 	static final CharSequence[] items = {"Take a photo","Choose from library","Cancel"};
 	static final String format = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+	
 	ImageView img_nric;
 	ImageView img_nric_back;
 	ImageView img_sign;
@@ -84,7 +81,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		img_sign.setOnClickListener(this);
 		btn_next.setOnClickListener(this);
 		
-		
 		nric_delete.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -126,7 +122,6 @@ public class MainActivity extends Activity implements OnClickListener {
 			}
 		});			
 	}
-	
 	
 	private String encode(Bitmap b) {
 		// TODO Auto-generated method stub
@@ -230,12 +225,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	    }
 		
 		if (requestCode == REQUEST_CHOOSE_LIBRARY && resultCode == RESULT_OK) {
-			Uri data2 = data.getData();
-			Bundle extras = data.getExtras();
 			
 			InputStream imageStream = null;
 			try {
-				imageStream = getContentResolver().openInputStream(data2);
+				imageStream = getContentResolver().openInputStream(data.getData());
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
